@@ -1,16 +1,14 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
+import React from 'react';
+import { createRoot } from 'react-dom/client';
 
-const App: React.FC = () => {
-    return (
-        <React.StrictMode>
-            <p>Hello React !</p>
-        </React.StrictMode>
-    );
-};
+const App: React.FC = () => (
+    <React.StrictMode>
+        <p>Hello React!</p>
+    </React.StrictMode>
+);
 
-const appElement = document.getElementById('app') as HTMLElement
+const appElement = document.getElementById('app');
 if (appElement) {
     const root = createRoot(appElement);
-    root.render(<App />)
+    root.render(<App />);
 }

@@ -10,7 +10,6 @@
      @vite(['resources/scss/app.scss', 'resources/ts/App.tsx'])
  </head>
 
-
  <body>
      <div id="app"></div>
  </body>

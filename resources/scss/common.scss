@@ -34,24 +34,26 @@ header {
     color: var(--header-text-color);
     padding: 16px 0;
     text-align: center;
+
+    h1 {
+        margin-bottom: 8px;
+    }
 }
 
-header h1 {
-    margin-bottom: 8px;
-}
+nav {
+    ul {
+        list-style: none;
 
-nav ul {
-    list-style: none;
-}
+        li {
+            display: inline;
+            margin: 0 16px;
 
-nav ul li {
-    display: inline;
-    margin: 0 16px;
-}
-
-nav ul li a {
-    color: var(--header-text-color);
-    text-decoration: none;
+            a {
+                color: var(--header-text-color);
+                text-decoration: none;
+            }
+        }
+    }
 }
 
 main {
@@ -64,11 +66,11 @@ main {
 
 section {
     margin-bottom: 32px;
-}
 
-section h2 {
-    margin-bottom: 16px;
-    color: var(--text-color);
+    h2 {
+        margin-bottom: 16px;
+        color: var(--text-color);
+    }
 }
 
 footer {
@@ -76,8 +78,8 @@ footer {
     padding: 16px 0;
     background: var(--footer-background);
     color: var(--footer-text-color);
-}
 
-footer p {
-    margin: 0;
+    p {
+        margin: 0;
+    }
 }

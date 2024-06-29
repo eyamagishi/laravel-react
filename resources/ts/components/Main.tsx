@@ -5,6 +5,7 @@ import Home from './Home';
 import About from './About';
 import Contact from './Contact';
 import Service from './Service';
+import Todo from './Todo';
 
 const Main: React.FC = () => (
     <main>
@@ -13,6 +14,7 @@ const Main: React.FC = () => (
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/service" element={<Service />} />
+            <Route path="/todo" element={<Todo />} />
         </Routes>
     </main>
 );

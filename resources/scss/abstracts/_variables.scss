@@ -1,0 +1,33 @@
+/* 変数・定数定義 */
+
+/* 色変数 */
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$background-color: #f4f4f4;
+$text-color: #333;
+$font-family: Arial, sans-serif;
+
+/* コンポーネントの色変数 */
+$header-background: $primary-color;
+$header-text-color: #fff;
+$main-background: #fff;
+$footer-background: $primary-color;
+$footer-text-color: #fff;
+
+/* ボックスシャドウ */
+$box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+/* タイポグラフィ変数 */
+$font-stack: 'Helvetica Neue', Arial, sans-serif;
+$base-font-size: 16px;
+$h1-font-size: 40px;
+$h2-font-size: 32px;
+$h3-font-size: 28px;
+$h4-font-size: 24px;
+$h5-font-size: 20px;
+$h6-font-size: 16px;
+$body-line-height: 1.6;
+
+/* レイアウト変数 */
+$container-width: 1200px;
+$gutter-width: 15px;

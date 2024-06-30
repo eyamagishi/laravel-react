@@ -96,12 +96,12 @@ class TodoService implements TodoServiceInterface
         }
     }
 
-/**
- * 指定されたデータ配列から特定の属性を抽出して返すメソッド。
- * 
- * @param array $data
- * @return array
- */
+    /**
+     * 指定されたデータ配列から特定の属性を抽出して返すメソッド。
+     * 
+     * @param array $data
+     * @return array
+     */
     private static function setAttributes(array $data): array
     {
         return [

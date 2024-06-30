@@ -21,13 +21,6 @@ class TodoController extends Controller
         return response()->json($todos);
     }
 
-    public function show(int $id)
-    {
-        // TODO: 処理未実装
-        // TODO: JsonResource作成
-        return response()->json([]);
-    }
-
     public function store(Request $request)
     {
         // TODO: リクエスト新規作成
@@ -39,6 +32,13 @@ class TodoController extends Controller
 
         $todo = $this->todoService->createTodo($validatedData);
         return response()->json($todo, 201);
+    }
+
+    public function show(int $id)
+    {
+        // TODO: 処理未実装
+        // TODO: JsonResource作成
+        return response()->json([]);
     }
 
     public function update(Request $request, int $id)

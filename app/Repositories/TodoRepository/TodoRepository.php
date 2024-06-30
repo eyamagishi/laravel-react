@@ -7,26 +7,11 @@ use App\Models\Todo;
 class TodoRepository implements TodoRepositoryInterface
 {
     /**
-     * @var Todo
-     */
-    protected $todo;
-
-    /**
-     * コンストラクタ
-     *
-     * @param Todo $todo
-     */
-    public function __construct(Todo $todo)
-    {
-        $this->todo = $todo;
-    }
-
-    /**
      * @inheritDoc
      */
     public function getTodos(): \Illuminate\Database\Eloquent\Collection
     {
-        return $this->todo->all();
+        return Todo::all();
     }
 
     /**
@@ -34,7 +19,7 @@ class TodoRepository implements TodoRepositoryInterface
      */
     public function findTodoById($id): ?\App\Models\Todo
     {
-        return $this->todo->findOrFail($id);
+        return Todo::findOrFail($id);
     }
 
     /**

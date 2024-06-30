@@ -5,22 +5,14 @@ namespace App\Repositories\TodoRepository;
 interface TodoRepositoryInterface
 {
     /**
-     * 全てのToDoタスクを取得します。
+     * 全てのToDoを取得
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getTodos(): \Illuminate\Database\Eloquent\Collection;
 
     /**
-     * 指定されたIDのToDoタスクを取得します。
-     *
-     * @param int $id
-     * @return \App\Models\Todo|null
-     */
-    public function findTodoById(int $id): ?\App\Models\Todo;
-
-    /**
-     * 新しいToDoタスクを作成します。
+     * 新しいToDoを作成
      *
      * @param array $data
      * @return \App\Models\Todo
@@ -28,7 +20,15 @@ interface TodoRepositoryInterface
     public function createTodo(array $data): \App\Models\Todo;
 
     /**
-     * 指定されたIDのToDoタスクを更新します。
+     * 指定されたIDのToDoを取得
+     *
+     * @param int $id
+     * @return \App\Models\Todo|null
+     */
+    public function findTodoById(int $id): ?\App\Models\Todo;
+
+    /**
+     * 指定されたIDのToDoを更新
      *
      * @param int $id
      * @param array $data
@@ -37,7 +37,7 @@ interface TodoRepositoryInterface
     public function updateTodo(int $id, array $data): ?\App\Models\Todo;
 
     /**
-     * 指定されたIDのToDoタスクを削除します。
+     * 指定されたIDのToDoを削除
      *
      * @param int $id
      * @return bool

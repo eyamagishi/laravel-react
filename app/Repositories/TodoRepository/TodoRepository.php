@@ -17,14 +17,6 @@ class TodoRepository implements TodoRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function findTodoById($id): ?\App\Models\Todo
-    {
-        return Todo::findOrFail($id);
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function createTodo(array $data): \App\Models\Todo
     {
         $todo = new Todo();
@@ -32,6 +24,14 @@ class TodoRepository implements TodoRepositoryInterface
         $todo->save();
 
         return $todo;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findTodoById($id): ?\App\Models\Todo
+    {
+        return Todo::findOrFail($id);
     }
 
     /**

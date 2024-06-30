@@ -3,8 +3,8 @@
 namespace App\Services\TodoService;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
+use App\Helpers\ApiResponseHelper;
 use App\Repositories\TodoRepository\TodoRepositoryInterface as TodoRepository;
 
 class TodoService implements TodoServiceInterface
@@ -35,14 +35,6 @@ class TodoService implements TodoServiceInterface
     /**
      * @inheritDoc
      */
-    public function findTodoById($id): ?\App\Models\Todo
-    {
-        return $this->todoRepository->findTodoById($id);
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function createTodo(array $data): \App\Models\Todo
     {
         DB::beginTransaction();
@@ -53,10 +45,16 @@ class TodoService implements TodoServiceInterface
             DB::commit();
             return $result;
         } catch (\Exception $e) {
-            DB::rollBack();
-            Log::error($e);
-            throw $e;
+            ApiResponseHelper::rollback($e);
         }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findTodoById($id): ?\App\Models\Todo
+    {
+        return $this->todoRepository->findTodoById($id);
     }
 
     /**
@@ -72,9 +70,7 @@ class TodoService implements TodoServiceInterface
             DB::commit();
             return $result;
         } catch (\Exception $e) {
-            DB::rollBack();
-            Log::error($e);
-            throw $e;
+            ApiResponseHelper::rollback($e);
         }
     }
 
@@ -90,9 +86,7 @@ class TodoService implements TodoServiceInterface
             DB::commit();
             return $result;
         } catch (\Exception $e) {
-            DB::rollBack();
-            Log::error($e);
-            throw $e;
+            ApiResponseHelper::rollback($e);
         }
     }
 

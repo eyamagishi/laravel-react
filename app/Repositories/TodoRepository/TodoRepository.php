@@ -32,7 +32,7 @@ class TodoRepository implements TodoRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function findTodosById($id): ?\App\Models\Todo
+    public function findTodoById($id): ?\App\Models\Todo
     {
         return $this->todo->findOrFail($id);
     }
@@ -40,26 +40,28 @@ class TodoRepository implements TodoRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function createTodo(array $data): bool
+    public function createTodo(array $data): \App\Models\Todo
     {
-        return $this->todo->create($data);
+        $todo = new Todo();
+        $todo->fill($data);
+        $todo->save();
+
+        return $todo;
     }
 
     /**
      * @inheritDoc
      */
-    public function updateTodo(int $id, array $data): bool
+    public function updateTodo(int $id, array $data): ?\App\Models\Todo
     {
-        // TODO: 再考する余地あり
-        $this->todo->findOrFail($id);
-
-        if (!$this->todo) {
-            return false;
+        $todo = $this->findTodoById($id);
+        if (!$todo) {
+            // idが存在しないとき
+            return null;
         }
-
-        $this->todo->fill($data);
-        $this->todo->save();
-        return $this->todo;
+        $todo->fill($data);
+        $todo->save();
+        return $todo;
     }
 
     /**
@@ -67,14 +69,11 @@ class TodoRepository implements TodoRepositoryInterface
      */
     public function deleteTodo(int $id): bool
     {
-        // TODO: 再考する余地あり
-        $this->todo->findOrFail($id);
-
-        if (!$this->todo) {
+        $todo = $this->findTodoById($id);
+        if (!$todo) {
+            // idが存在しないとき
             return false;
         }
-
-        $this->todo->delete();
-        return $this->todo;
+        return $todo->delete();
     }
 }

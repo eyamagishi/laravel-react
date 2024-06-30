@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TodoRequest;
 use App\Services\TodoService\TodoServiceInterface as TodoService;
-use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
@@ -21,14 +21,9 @@ class TodoController extends Controller
         return response()->json($todos);
     }
 
-    public function store(Request $request)
+    public function store(TodoRequest $request)
     {
-        // TODO: リクエスト新規作成
-        // TODO: バリデーション作成
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-        ]);
+        $validatedData = $request->validated();
 
         $todo = $this->todoService->createTodo($validatedData);
         return response()->json($todo, 201);
@@ -38,18 +33,12 @@ class TodoController extends Controller
     {
         // TODO: 処理未実装
         // TODO: JsonResource作成
-        return response()->json([]);
+        return response()->json("show");
     }
 
-    public function update(Request $request, int $id)
+    public function update(TodoRequest $request, int $id)
     {
-        // TODO: リクエスト新規作成
-        // TODO: バリデーション作成
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'completed' => 'required|boolean',
-        ]);
+        $validatedData = $request->validated();
 
         $todo = $this->todoService->updateTodo($id, $validatedData);
         // TODO: JsonResource作成

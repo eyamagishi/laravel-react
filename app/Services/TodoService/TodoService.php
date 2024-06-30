@@ -35,20 +35,22 @@ class TodoService implements TodoServiceInterface
     /**
      * @inheritDoc
      */
-    public function findTodosById($id): ?\App\Models\Todo
+    public function findTodoById($id): ?\App\Models\Todo
     {
-        return $this->todoRepository->findTodosById($id);
+        return $this->todoRepository->findTodoById($id);
     }
 
     /**
      * @inheritDoc
      */
-    public function createTodo(array $data): bool
+    public function createTodo(array $data): \App\Models\Todo
     {
         DB::beginTransaction();
         try {
             $attributes = [
-                'title' => $data['title']
+                'title'       => $data['title'],
+                'description' => $data['description'],
+                'completed'   => $data['completed'],
             ];
             $result = $this->todoRepository->createTodo($attributes);
 
@@ -64,12 +66,14 @@ class TodoService implements TodoServiceInterface
     /**
      * @inheritDoc
      */
-    public function updateTodo(int $id, array $data): bool
+    public function updateTodo(int $id, array $data): ?\App\Models\Todo
     {
         DB::beginTransaction();
         try {
             $attributes = [
-                'title' => $data['title']
+                'title'       => $data['title'],
+                'description' => $data['description'],
+                'completed'   => $data['completed'],
             ];
             $result = $this->todoRepository->updateTodo($id, $attributes);
 

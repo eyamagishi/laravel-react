@@ -47,11 +47,7 @@ class TodoService implements TodoServiceInterface
     {
         DB::beginTransaction();
         try {
-            $attributes = [
-                'title'       => $data['title'],
-                'description' => $data['description'],
-                'completed'   => $data['completed'],
-            ];
+            $attributes = self::setAttributes($data);
             $result = $this->todoRepository->createTodo($attributes);
 
             DB::commit();
@@ -70,11 +66,7 @@ class TodoService implements TodoServiceInterface
     {
         DB::beginTransaction();
         try {
-            $attributes = [
-                'title'       => $data['title'],
-                'description' => $data['description'],
-                'completed'   => $data['completed'],
-            ];
+            $attributes = self::setAttributes($data);
             $result = $this->todoRepository->updateTodo($id, $attributes);
 
             DB::commit();
@@ -102,5 +94,20 @@ class TodoService implements TodoServiceInterface
             Log::error($e);
             throw $e;
         }
+    }
+
+/**
+ * 指定されたデータ配列から特定の属性を抽出して返すメソッド。
+ * 
+ * @param array $data
+ * @return array
+ */
+    private static function setAttributes(array $data): array
+    {
+        return [
+            'title'       => $data['title'],
+            'description' => $data['description'],
+            'completed'   => $data['completed'],
+        ];
     }
 }

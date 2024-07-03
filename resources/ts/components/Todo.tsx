@@ -3,20 +3,14 @@ import axios from "axios";
 
 import { TODO } from '../constants/labels';
 import { TODOS_ENDPOINT } from '../constants/api';
-
-interface TodoItem {
-    id: number;
-    title: string;
-    description: string;
-    completed: boolean;
-}
+import { Todo } from '../types/Todo';
 
 const Todo: React.FC = () => {
-    const [todos, setTodos] = useState<TodoItem[]>([]);
+    const [todos, setTodos] = useState<Todo[]>([]);
 
     const fetchTodos = async () => {
         try {
-            const res = await axios.get<TodoItem[]>(TODOS_ENDPOINT);
+            const res = await axios.get<Todo[]>(TODOS_ENDPOINT);
             setTodos(res.data);
         } catch (error) {
             console.error('Failed to fetch todos:', error);

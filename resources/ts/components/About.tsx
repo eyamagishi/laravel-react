@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ABOUT } from '../config/constants';
+import { ABOUT } from '../constants/labels';
 
 const About: React.FC = () => (
     <section id="about">

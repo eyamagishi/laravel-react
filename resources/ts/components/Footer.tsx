@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { HOMEPAGE_NAME } from '../config/constants';
+import { HOMEPAGE_NAME } from '../constants/labels';
 
 const Footer: React.FC = () => (
     <footer>

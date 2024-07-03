@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { TODO } from '../config/constants';
+import { TODO } from '../constants/labels';
+import { TODOS_ENDPOINT } from '../constants/api';
 
 interface TodoItem {
     id: number;
@@ -15,7 +16,7 @@ const Todo: React.FC = () => {
 
     const fetchTodos = async () => {
         try {
-            const res = await axios.get<TodoItem[]>('api/todos');
+            const res = await axios.get<TodoItem[]>(TODOS_ENDPOINT);
             setTodos(res.data);
         } catch (error) {
             console.error('Failed to fetch todos:', error);

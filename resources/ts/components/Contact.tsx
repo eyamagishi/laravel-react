@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CONTACT } from '../config/constants';
+import { CONTACT } from '../constants/labels';
 
 const Contact: React.FC = () => (
     <section id="contact">

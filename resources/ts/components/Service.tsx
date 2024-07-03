@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SERVICE } from '../config/constants';
+import { SERVICE } from '../constants/labels';
 
 const Service: React.FC = () => (
     <section id="service">

@@ -5,16 +5,20 @@ import { TODO } from '../constants/labels';
 import { TODOS_ENDPOINT } from '../constants/api';
 import { Todo } from '../types/Todo';
 
-const Todo: React.FC = () => {
+const TodoList: React.FC = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const fetchTodos = async () => {
         try {
+            setIsLoading(true);
             const res = await axios.get<Todo[]>(TODOS_ENDPOINT);
             setTodos(res.data);
         } catch (error) {
             console.error('Failed to fetch todos:', error);
             return error;
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -25,19 +29,21 @@ const Todo: React.FC = () => {
     return (
         <section id="todo">
             <h2>{TODO}</h2>
-            <p>ここはTODOのセクションです。</p>
-            {todos.map((todo) => {
-                return (
-                    <div key={todo.id}>
-                        <h1>title:{todo.title}</h1>
-                        <p>id:{todo.id}</p>
-                        <p>description:{todo.description}</p>
-                        <p>completed:{todo.completed}</p>
-                    </div>
-                );
-            })}
+            {isLoading ? (
+                <p>Loading...</p>
+            ) : (
+                <ul>
+                    {todos.map(todo => (
+                        <li key={todo.id}>
+                            <h3>{todo.title}</h3>
+                            <p>{todo.description}</p>
+                            <p>{todo.completed ? 'Completed' : 'Not Completed'}</p>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </section>
     );
 };
 
-export default Todo;
+export default TodoList;

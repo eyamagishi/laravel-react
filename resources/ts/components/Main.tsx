@@ -7,7 +7,7 @@ import Home from './Home';
 import About from './About';
 import Contact from './Contact';
 import Service from './Service';
-import Todo from './Todo';
+import Todo from './TodoList';
 
 const Main: React.FC = () => (
     <main>

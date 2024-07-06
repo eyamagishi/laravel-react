@@ -1,5 +1,25 @@
-/* タイポグラフィ */
+/*
+  =============================================================================
+  _typography.scss
+  =============================================================================
 
+  ファイルの目的:
+  このファイルはプロジェクト全体のタイポグラフィスタイルを定義します。
+  フォントの設定、見出し、段落、リスト、リンク、引用、コードなどの基本的なテキスト要素のスタイルをカバーしています。
+
+  作者: eyamagishi
+
+  作成日: 2024/07/06
+
+  最終更新日: 2024/07/06
+
+  注意事項:
+  このファイルには、一般的なタイポグラフィスタイルのみを含め、
+  特定のコンポーネントやページ固有のスタイルは別のファイルに分けてください。
+  例: components/_button.scss, pages/_home.scssなど。
+
+  =============================================================================
+*/
 html,
 body {
     height: 100%;
@@ -13,26 +33,6 @@ header {
     color: $header-text-color;
     padding: 16px 0;
     text-align: center;
-
-    h1 {
-        margin-bottom: 8px;
-    }
-}
-
-nav {
-    ul {
-        list-style: none;
-
-        li {
-            display: inline;
-            margin: 0 16px;
-
-            a {
-                color: $header-text-color;
-                text-decoration: none;
-            }
-        }
-    }
 }
 
 main {
@@ -57,8 +57,4 @@ footer {
     padding: 16px 0;
     background: $footer-background;
     color: $footer-text-color;
-
-    p {
-        margin: 0;
-    }
 }

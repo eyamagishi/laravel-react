@@ -1,0 +1,35 @@
+/* _header.scss */
+header {
+    background: $header-background;
+    color: $header-text-color;
+    padding: 16px 0;
+    text-align: center;
+
+    h1 {
+        margin-bottom: 8px;
+    }
+
+    nav {
+        ul {
+            list-style: none;
+
+            li {
+                display: inline;
+                margin: 0 16px;
+
+                a {
+                    color: $header-text-color;
+                    text-decoration: none;
+
+                    &:hover {
+                        background-color: #555;
+                        border-radius: 5px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                        color: #ffdd57;
+                        transition: all 0.3s ease;
+                    }
+                }
+            }
+        }
+    }
+}

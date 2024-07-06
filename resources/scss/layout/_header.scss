@@ -1,10 +1,5 @@
 /* _header.scss */
 header {
-    background: $header-background;
-    color: $header-text-color;
-    padding: 16px 0;
-    text-align: center;
-
     h1 {
         margin-bottom: 8px;
     }
@@ -22,10 +17,10 @@ header {
                     text-decoration: none;
 
                     &:hover {
-                        background-color: #555;
+                        background: $header-background-hover;
                         border-radius: 5px;
                         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-                        color: #ffdd57;
+                        color: $header-text-color-hover;
                         transition: all 0.3s ease;
                     }
                 }

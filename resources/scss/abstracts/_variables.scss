@@ -2,7 +2,6 @@
 
 /* 色変数 */
 $primary-color: #3498db;
-$primary-color-hover: #cb6724;
 $secondary-color: #2ecc71;
 $background-color: #f4f4f4;
 $text-color: #333;
@@ -10,9 +9,7 @@ $font-family: Arial, sans-serif;
 
 /* コンポーネントの色変数 */
 $header-background: $primary-color;
-$header-background-hover: $primary-color-hover;
 $header-text-color: #fff;
-$header-text-color-hover: #333;
 $main-background: #fff;
 $footer-background: $primary-color;
 $footer-text-color: #fff;

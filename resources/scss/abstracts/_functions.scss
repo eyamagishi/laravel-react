@@ -1,1 +1,19 @@
 /* 関数定義 */
+
+/**
+ * 色の補色を計算する関数
+ *
+ * @param {Color} $color - The RGB color to calculate complement.
+ * @return {Color} - The complement RGB color.
+ */
+@function complement($color) {
+    $red: red($color);
+    $green: green($color);
+    $blue: blue($color);
+
+    $comp_red: 255 - $red;
+    $comp_green: 255 - $green;
+    $comp_blue: 255 - $blue;
+
+    @return rgb($comp_red, $comp_green, $comp_blue);
+}

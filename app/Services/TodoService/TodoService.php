@@ -100,7 +100,6 @@ class TodoService implements TodoServiceInterface
     {
         return [
             'title'       => $data['title'],
-            'description' => $data['description'],
             'completed'   => $data['completed'],
         ];
     }

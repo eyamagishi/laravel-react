@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import AddTodo from './AddTodo';
+import TodoItem from './TodoItem';
+
 import { TODO } from '../constants/labels';
 import { TODOS_ENDPOINT } from '../constants/api';
 import { Todo } from '../types/Todo';
@@ -29,19 +32,12 @@ const TodoList: React.FC = () => {
     return (
         <section id="todo">
             <h2>{TODO}</h2>
-            {isLoading ? (
-                <p>Loading...</p>
-            ) : (
-                <ul>
-                    {todos.map(todo => (
-                        <li key={todo.id}>
-                            <h3>{todo.title}</h3>
-                            <p>{todo.description}</p>
-                            <p>{todo.completed ? 'Completed' : 'Not Completed'}</p>
-                        </li>
-                    ))}
-                </ul>
-            )}
+            <AddTodo fetchTodos={fetchTodos} />
+            <ul>
+                {todos.map(todo => (
+                    <TodoItem key={todo.id} todo={todo} fetchTodos={fetchTodos} />
+                ))}
+            </ul>
         </section>
     );
 };

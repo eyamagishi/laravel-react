@@ -6,23 +6,23 @@ import { TODOS_ENDPOINT } from '../constants/api';
 const AddTodo: React.FC<{ fetchTodos: () => void }> = ({ fetchTodos }) => {
     const [title, setTitle] = useState('');
 
-    const addTodo = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const addTodo = async () => {
+        console.log("addTodo");
         await axios.post(TODOS_ENDPOINT, { title, completed: false });
         setTitle('');
         fetchTodos();
     };
 
     return (
-        <form onSubmit={addTodo}>
+        <div>
             <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="title"
+                placeholder="新しいタスクを追加"
             />
-            <button type="submit">追加</button>
-        </form>
+            <button onClick={addTodo}>追加</button>
+        </div>
     );
 };
 

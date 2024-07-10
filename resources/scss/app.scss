@@ -7,9 +7,13 @@
 // base
 @import 'base/reset';
 @import 'base/typography';
+@import 'base/base';
 
 // components
 
 // layout
 @import 'layout/footer';
 @import 'layout/header';
+
+// pages
+@import 'pages/todo';

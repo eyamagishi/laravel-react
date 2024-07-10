@@ -21,7 +21,7 @@ const AddTodo: React.FC<{ fetchTodos: () => void }> = ({ fetchTodos }) => {
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="新しいタスクを追加"
             />
-            <button onClick={addTodo}>追加</button>
+            <button onClick={addTodo} className="todo-add">追加</button>
         </div>
     );
 };

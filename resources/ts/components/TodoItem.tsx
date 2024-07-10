@@ -25,15 +25,18 @@ const TodoItem: React.FC<{ todo: any, fetchTodos: () => void }> = ({ todo, fetch
     };
 
     return (
-        <li key={todo.id}>
-            <input
-                type="checkbox"
-                checked={completed}
-                onChange={handleCheckboxChange}
-            />
-            {todo.title}
-            <button onClick={() => deleteTodo(todo.id)}>削除</button>
-        </li>
+        <tr key={todo.id}>
+            <td>
+                <input
+                    type="checkbox"
+                    checked={completed}
+                    onChange={handleCheckboxChange}
+                    className="todo-checkbox"
+                />
+            </td>
+            <td className="todo-title">{todo.title}</td>
+            <td><button onClick={() => deleteTodo(todo.id)} className="todo-delete">削除</button></td>
+        </tr>
     );
 };
 

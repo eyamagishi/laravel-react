@@ -1,33 +1,43 @@
-/* 変数・定数定義 */
+// プライマリカラー
+$primary-color: #3498db;       // メインのプライマリカラー
+$primary-color-hover: #217dbb; // ホバー時のプライマリカラー
 
-/* 色変数 */
-$primary-color: #3498db;
-$secondary-color: #A00203;
-$background-color: #f4f4f4;
-$text-color: #333;
-$font-family: Arial, sans-serif;
+// セカンダリカラー
+$secondary-color: #A00203; // セカンダリカラー
 
-/* コンポーネントの色変数 */
-$header-background: $primary-color;
-$header-text-color: #fff;
-$main-background: #fff;
-$footer-background: $primary-color;
-$footer-text-color: #fff;
+// 背景色
+$background-color: #f4f4f4; // 背景色
+$text-color: #333;          // テキスト色
 
-/* ボックスシャドウ */
-$box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+// フォント
+$font-family: Arial, sans-serif;                   // メインのフォントファミリー
+$font-stack: 'Helvetica Neue', Arial, sans-serif;  // フォントスタック
 
-/* タイポグラフィ変数 */
-$font-stack: 'Helvetica Neue', Arial, sans-serif;
-$base-font-size: 16px;
-$h1-font-size: 32px;
-$h2-font-size: 28px;
-$h3-font-size: 24px;
-$h4-font-size: 20px;
-$h5-font-size: 16px;
-$h6-font-size: 12px;
-$body-line-height: 1.6;
+// ヘッダースタイル
+$header-background: $primary-color; // ヘッダーの背景色
+$header-text-color: #fff;         // ヘッダーのテキスト色
 
-/* レイアウト変数 */
-$container-width: 1200px;
-$gutter-width: 15px;
+// メインコンテンツスタイル
+$main-background: #fff; // メインコンテンツの背景色
+
+// フッタースタイル
+$footer-background: $primary-color; // フッターの背景色
+
+// ボックスシャドウ
+$box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // ボックスシャドウ
+
+// タイポグラフィーサイズ
+$base-font-size: 16px; // ベースのフォントサイズ
+$h1-font-size: 32px;   // H1のフォントサイズ
+$h2-font-size: 28px;   // H2のフォントサイズ
+$h3-font-size: 24px;   // H3のフォントサイズ
+$h4-font-size: 20px;   // H4のフォントサイズ
+$h5-font-size: 16px;   // H5のフォントサイズ
+$h6-font-size: 12px;   // H6のフォントサイズ
+
+// 行の高さ
+$body-line-height: 1.6; // 本文の行の高さ
+
+// レイアウトサイズ
+$container-width: 1200px; // コンテナの幅
+$gutter-width: 15px;      // ガッターの幅

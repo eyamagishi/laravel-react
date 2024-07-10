@@ -1,0 +1,50 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+    td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+
+    &:checked + label:before {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    &:checked + label:after {
+        content: '✓';
+        position: absolute;
+        left: 4px;
+        top: 0;
+        color: white;
+        font-size: 14px;
+    }
+}

@@ -33,11 +33,11 @@ const TodoList: React.FC = () => {
         <section id="todo">
             <h2>{TODO}</h2>
             <AddTodo fetchTodos={fetchTodos} />
-            <ul>
+            <table>
                 {todos.map(todo => (
                     <TodoItem key={todo.id} todo={todo} fetchTodos={fetchTodos} />
                 ))}
-            </ul>
+            </table>
         </section>
     );
 };

@@ -3,8 +3,8 @@
 /**
  * 色の補色を計算する関数
  *
- * @param {Color} $color - The RGB color to calculate complement.
- * @return {Color} - The complement RGB color.
+ * @param {Color} $color - 補色を計算するRGB色。
+ * @return {Color} - 補色のRGB色。
  */
 @function complement($color) {
     $red: red($color);
@@ -16,4 +16,21 @@
     $comp_blue: 255 - $blue;
 
     @return rgb($comp_red, $comp_green, $comp_blue);
+}
+
+/**
+ * ホバー時の色を生成する関数
+ *
+ * @param {Color} $color - ベースとなるRGB色。
+ * @param {Number} $amount - オプション。色の明るさを調整する量。デフォルトは10%。
+ * @return {Color} - ホバー時の状態に調整されたRGB色。
+ */
+@function hover-color($color, $amount: 10%) {
+    @if (lightness($color) > 50%) {
+        @return darken($color, $amount);
+    }
+
+    @else {
+        @return lighten($color, $amount);
+    }
 }

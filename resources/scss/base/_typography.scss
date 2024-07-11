@@ -22,26 +22,13 @@ header {
     text-align: center;
 }
 
-main {
-    padding: 32px;
-    background: $main-background;
-    margin: 32px auto;
-    max-width: 800px;
-    box-shadow: $box-shadow;
-}
-
 footer {
     color: $footer-text-color;
     text-align: center;
 }
 
-section {
-    margin-bottom: 32px;
-
-    h2 {
-        margin-bottom: 16px;
-        color: $text-color;
-    }
+button {
+    color: white;
 }
 
 h1 {

@@ -4,6 +4,23 @@ body {
     background: $background-color;
 }
 
+main {
+    padding: 32px;
+    background: $main-background;
+    margin: 32px auto;
+    max-width: 800px;
+    box-shadow: $box-shadow;
+}
+
+section {
+    margin-bottom: 32px;
+
+    h2 {
+        margin-bottom: 16px;
+        color: $text-color;
+    }
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -22,7 +39,6 @@ button {
     width: 100%;
     padding: 10px;
     border-radius: 4px;
-    color: white;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;

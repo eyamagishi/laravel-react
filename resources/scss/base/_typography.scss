@@ -19,12 +19,22 @@ body {
     color: $text-color;
 }
 
+header {
+    color: $header-text-color;
+    text-align: center;
+}
+
 main {
     padding: 32px;
     background: $main-background;
     margin: 32px auto;
     max-width: 800px;
     box-shadow: $box-shadow;
+}
+
+footer {
+    color: $footer-text-color;
+    text-align: center;
 }
 
 section {

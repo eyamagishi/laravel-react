@@ -1,12 +1,10 @@
 html,
 body {
     height: 100%;
-    background: $background-color;
 }
 
 main {
     padding: 32px;
-    background: $main-background;
     margin: 32px auto;
     max-width: 800px;
     box-shadow: $box-shadow;

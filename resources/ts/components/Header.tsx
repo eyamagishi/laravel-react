@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { HOMEPAGE_NAME, HOME, ABOUT, CONTACT, SERVICE, TODO } from '../constants/labels';
-import { HOME_PAGE, ABOUT_PAGE, CONTACT_PAGE, SERVICE_PAGE, TODO_PAGE } from '../constants/routes';
+import { HOMEPAGE_NAME, HOME, ABOUT, CONTACT, SERVICE } from '../constants/labels';
+import { HOME_PAGE, ABOUT_PAGE, CONTACT_PAGE, SERVICE_PAGE } from '../constants/routes';
 
 const Header: React.FC = () => {
     return (
@@ -14,7 +14,6 @@ const Header: React.FC = () => {
                     <li><Link to={ABOUT_PAGE}>{ABOUT}</Link></li>
                     <li><Link to={CONTACT_PAGE}>{CONTACT}</Link></li>
                     <li><Link to={SERVICE_PAGE}>{SERVICE}</Link></li>
-                    <li><Link to={TODO_PAGE}>{TODO}</Link></li>
                 </ul>
             </nav>
         </header>

@@ -1,46 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
+import TypingModal from './TypingModal';
 
 const Typing: React.FC = () => {
-    const [word, setWord] = useState<string>('');
-    const [input, setInput] = useState<string>('');
-    const [score, setScore] = useState<number>(0);
-    const [timeLeft, setTimeLeft] = useState<number>(60);
+    const [showModal, setShowModal] = useState(false);
 
-    const words: string[] = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
-
-    useEffect(() => {
-        const randomWord = words[Math.floor(Math.random() * words.length)];
-        setWord(randomWord);
-    }, []);
-
-    useEffect(() => {
-        if (timeLeft > 0) {
-            const timer = setInterval(() => {
-                setTimeLeft(timeLeft - 1);
-            }, 1000);
-            return () => clearInterval(timer);
-        }
-    }, [timeLeft]);
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInput(e.target.value);
-        if (e.target.value === word) {
-            setScore(score + 1);
-            setInput('');
-            const randomWord = words[Math.floor(Math.random() * words.length)];
-            setWord(randomWord);
-        }
+    const ShowModal = () => {
+        setShowModal(true);
     };
 
     return (
-        <div>
-            <h2>Typing</h2>
-            <h3>Word: {word}</h3>
-            <input type="text" value={input} onChange={handleInputChange} />
-            <h4>Score: {score}</h4>
-            <h4>Time Left: {timeLeft} seconds</h4>
-        </div>
+        <>
+            <div>
+                <div id="typing-start">
+                    <h2>Typing</h2>
+                    <p>下のボタンをクリックするとゲーム画面が開きます。</p>
+                    <button id="open-button" type="button" onClick={ShowModal}>今すぐスタート！</button>
+                    <p className="note">※スクリーンサイズの都合上、解像度(横)748px以上のデバイスでのプレイを推奨します。</p>
+                    <noscript>
+                        <p className="msg">本ゲームをプレイするにはJavaScriptを有効化してください。</p>
+                    </noscript>
+                </div>
+            </div>
+            <TypingModal showFlag={showModal} setShowFlag={setShowModal} />
+        </>
     );
 };
 

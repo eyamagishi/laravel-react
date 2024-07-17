@@ -99,8 +99,8 @@ class TodoService implements TodoServiceInterface
     private static function setAttributes(array $data): array
     {
         return [
-            'title'       => $data['title'],
-            'completed'   => $data['completed'],
+            'title'     => $data['title'],
+            'completed' => $data['completed'],
         ];
     }
 }

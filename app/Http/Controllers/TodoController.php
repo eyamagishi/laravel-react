@@ -30,7 +30,7 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(): \Illuminate\Http\JsonResponse
     {
         $todos = $this->todoService->getTodos();
         return response()->json(TodoResource::collection($todos), Response::HTTP_OK);
@@ -42,7 +42,7 @@ class TodoController extends Controller
      * @param TodoRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(TodoRequest $request)
+    public function store(TodoRequest $request): \Illuminate\Http\JsonResponse
     {
         try {
             $validatedData = $request->validated();
@@ -62,7 +62,7 @@ class TodoController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(int $id)
+    public function show(int $id): \Illuminate\Http\JsonResponse
     {
         $todo = $this->todoService->findTodoById($id);
         return response()->json(new TodoResource($todo), Response::HTTP_OK);
@@ -75,7 +75,7 @@ class TodoController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(TodoRequest $request, int $id)
+    public function update(TodoRequest $request, int $id): \Illuminate\Http\JsonResponse
     {
         try {
             $validatedData = $request->validated();
@@ -95,7 +95,7 @@ class TodoController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(int $id)
+    public function destroy(int $id): \Illuminate\Http\JsonResponse
     {
         $this->todoService->deleteTodo($id);
         return response()->json([], Response::HTTP_NO_CONTENT);

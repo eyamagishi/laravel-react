@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '@scss/layout/_footer.scss';
+import '@scss/components/_footer.scss';
 
 import { HOMEPAGE_NAME } from '../constants/labels';
 

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import '@scss/components/typing.scss';
 
 interface ModalProps {

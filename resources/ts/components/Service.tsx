@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { SERVICE, TODO, TYPING } from '../constants/labels';
-import { TODO_PAGE, TYPING_PAGE } from '../constants/routes';
+import { SERVICE, TODO } from '../constants/labels';
+import { TODO_PAGE } from '../constants/routes';
 
 const Service: React.FC = () => (
     <section id="service">
@@ -11,7 +11,6 @@ const Service: React.FC = () => (
         <nav>
             <ul>
                 <li><Link to={TODO_PAGE}>{TODO}</Link></li>
-                <li><Link to={TYPING_PAGE}>{TYPING}</Link></li>
             </ul>
         </nav>
     </section>

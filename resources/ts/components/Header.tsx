@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '@scss/components/_header.scss';
-
 import { HOMEPAGE_NAME, HOME, ABOUT, CONTACT, SERVICE } from '../constants/labels';
 import { HOME_PAGE, ABOUT_PAGE, CONTACT_PAGE, SERVICE_PAGE } from '../constants/routes';
 

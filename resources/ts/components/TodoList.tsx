@@ -10,18 +10,14 @@ import { Todo } from '../types/Todo';
 
 const TodoList: React.FC = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const fetchTodos = async () => {
         try {
-            setIsLoading(true);
             const res = await axios.get<Todo[]>(TODOS_ENDPOINT);
             setTodos(res.data);
         } catch (error) {
             console.error('Failed to fetch todos:', error);
             return error;
-        } finally {
-            setIsLoading(false);
         }
     };
 

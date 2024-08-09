@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from 'axios';
 
 const TodoItem: React.FC<{ todo: any, fetchTodos: () => void }> = ({ todo, fetchTodos }) => {
-    const [completed, setCompleted] = useState<boolean>(false);
-
-    const handleCheckboxChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newCompleted = e.target.checked;
-        setCompleted(newCompleted);
+    const handleCheckboxChange = async (completed: React.ChangeEvent<HTMLInputElement>) => {
+        const newCompleted = completed.target.checked;
 
         try {
             await axios.put(`/api/todos/${todo.id}`, {
@@ -15,7 +12,7 @@ const TodoItem: React.FC<{ todo: any, fetchTodos: () => void }> = ({ todo, fetch
             });
             fetchTodos();
         } catch (error) {
-            console.error("Failed to update todo", error);
+            console.error('Failed to update todo', error);
         }
     };
 
@@ -29,9 +26,9 @@ const TodoItem: React.FC<{ todo: any, fetchTodos: () => void }> = ({ todo, fetch
             <td>
                 <input
                     type="checkbox"
-                    checked={completed}
+                    checked={todo.completed}
                     onChange={handleCheckboxChange}
-                    className="todo-checkbox"
+                    className="todo-completed"
                 />
             </td>
             <td className="todo-title">{todo.title}</td>

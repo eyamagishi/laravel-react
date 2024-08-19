@@ -4,9 +4,9 @@ import axios from "axios";
 import AddTodo from './AddTodo';
 import TodoItem from './TodoItem';
 
-import { TODO } from '../constants/labels';
-import { TODOS_ENDPOINT } from '../constants/api';
-import { Todo } from '../types/Todo';
+import { TODO } from '../../constants/labels';
+import { TODOS_ENDPOINT } from '../../constants/api';
+import { Todo } from '../../types/Todo';
 
 const TodoList: React.FC = () => {
     const [todos, setTodos] = useState<Todo[]>([]);

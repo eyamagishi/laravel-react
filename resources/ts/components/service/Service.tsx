@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { SERVICE, TODO } from '../constants/labels';
-import { TODO_PAGE } from '../constants/routes';
+import { SERVICE, TODO } from '../../constants/labels';
+import { TODO_PAGE } from '../../constants/routes';
 
 const Service: React.FC = () => (
     <section id="service">

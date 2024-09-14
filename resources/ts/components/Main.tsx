@@ -6,8 +6,8 @@ import { HOME_PAGE, ABOUT_PAGE, CONTACT_PAGE, SERVICE_PAGE, TODO_PAGE } from '..
 import Home from './Home';
 import About from './About';
 import Contact from './Contact';
-import Service from './Service';
-import Todo from './todoList/TodoList';
+import Service from './service/Service';
+import Todo from './service/todoList/TodoList';
 
 const Main: React.FC = () => (
     <main>

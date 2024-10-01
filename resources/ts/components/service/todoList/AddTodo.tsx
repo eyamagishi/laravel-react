@@ -7,7 +7,6 @@ const AddTodo: React.FC<{ fetchTodos: () => void }> = ({ fetchTodos }) => {
     const [title, setTitle] = useState('');
 
     const addTodo = async () => {
-        console.log("addTodo");
         await axios.post(TODOS_ENDPOINT, { title, completed: false });
         setTitle('');
         fetchTodos();

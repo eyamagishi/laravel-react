@@ -1,7 +1,7 @@
 export const HOMEPAGE_NAME: string = "Done is better than perfect";
-export const HOME: string = "HOME";
-export const ABOUT: string = "ABOUT";
-export const CONTACT: string = "CONTACT";
-export const SERVICE: string = "SERVICE";
+export const HOME_NAME: string = "HOME";
+export const ABOUT_NAME: string = "ABOUT";
+export const CONTACT_NAME: string = "CONTACT";
+export const SERVICE_NAME: string = "SERVICE";
 export const TODO_NAME: string = "TODO";
-export const POKEMON: string = "POKEMON";
+export const POKEMON_NAME: string = "POKEMON";

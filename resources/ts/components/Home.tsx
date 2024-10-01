@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { HOME } from '../constants/labels';
+import { HOME_NAME } from '../constants/labels';
 
 const Home: React.FC = () => (
     <section id="home">
-        <h2>{HOME}</h2>
+        <h2>{HOME_NAME}</h2>
         <p>ここはホームページのホームセクションです。</p>
     </section>
 );

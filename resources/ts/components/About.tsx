@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { ABOUT } from '../constants/labels';
+import { ABOUT_NAME } from '../constants/labels';
 
 const About: React.FC = () => (
     <section id="about">
-        <h2>{ABOUT}</h2>
+        <h2>{ABOUT_NAME}</h2>
         <p>ここは私についてのセクションです。</p>
     </section>
 );

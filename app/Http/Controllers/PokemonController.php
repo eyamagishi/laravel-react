@@ -15,6 +15,9 @@ class PokemonController extends Controller
      */
     public function index(): \Symfony\Component\HttpFoundation\Response
     {
-        return response()->json([], Response::HTTP_OK);
+        $data = [
+            'name' => 'フシギダネ',
+        ];
+        return response()->json($data, Response::HTTP_OK);
     }
 }

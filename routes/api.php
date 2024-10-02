@@ -15,4 +15,4 @@ Route::put('todos/{id}', [\App\Http\Controllers\TodoController::class, 'update']
 Route::delete('todos/{id}', [\App\Http\Controllers\TodoController::class, 'destroy']);
 
 // PokemonAPI
-Route::get('pokemon', [\App\Http\Controllers\TodoController::class, 'index']);
+Route::get('pokemon', [\App\Http\Controllers\PokemonController::class, 'index']);

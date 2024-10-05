@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-import { TODOS_ENDPOINT } from '../../../constants/api';
+import { TODOS_ENDPOINT } from '@ts/constants/api';
 
 const AddTodo: React.FC<{ fetchTodos: () => void }> = ({ fetchTodos }) => {
     const [title, setTitle] = useState('');

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { SERVICE_NAME, TODO_NAME, POKEMON_NAME } from '../../constants/labels';
-import { TODO_PAGE, POKEMON_PAGE } from '../../constants/routes';
+import { SERVICE_NAME, TODO_NAME, POKEMON_NAME } from '@ts/constants/labels';
+import { TODO_PAGE, POKEMON_PAGE } from '@ts/constants/routes';
 
 const Service: React.FC = () => (
     <section id="service">

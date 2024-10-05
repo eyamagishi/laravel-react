@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { HOME_NAME } from '../constants/labels';
+import { HOME_NAME } from '@ts/constants/labels';
 
 const Home: React.FC = () => (
     <section id="home">

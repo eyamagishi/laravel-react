@@ -6,9 +6,9 @@ import './Todo.scss';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 
-import { TODO_NAME } from '../../../constants/labels';
-import { TODOS_ENDPOINT } from '../../../constants/api';
-import { Todo } from '../../../types/Todo';
+import { TODO_NAME } from '@ts/constants/labels';
+import { TODOS_ENDPOINT } from '@ts/constants/api';
+import { Todo } from '@ts/types/Todo';
 
 const TODO: React.FC = () => {
     const [todos, setTodos] = useState<Todo[]>([]);

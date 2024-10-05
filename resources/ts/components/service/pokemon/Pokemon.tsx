@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { POKEMON_NAME } from '../../../constants/labels';
-import { POKEMON_ENDPOINT } from '../../../constants/api';
-import { Pokemon } from '../../../types/Pokemon';
+import { POKEMON_NAME } from '@ts/constants/labels';
+import { POKEMON_ENDPOINT } from '@ts/constants/api';
+import { Pokemon } from '@ts/types/Pokemon';
 
 const Pokemon: React.FC = () => {
     const [Pokemon, setPokemon] = useState<Pokemon[]>([]);

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import TodoItem from './TodoItem';
-import { Todo } from '../../../types/Todo';
+import { Todo } from '@ts/types/Todo';
 
 const TodoList: React.FC<{ todos: Todo[], fetchTodos: () => void }> = ({ todos, fetchTodos }) => {
     useEffect(() => {

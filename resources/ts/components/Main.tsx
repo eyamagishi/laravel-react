@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { HOME_PAGE, ABOUT_PAGE, CONTACT_PAGE, SERVICE_PAGE, TODO_PAGE, POKEMON_PAGE } from '../constants/routes';
+import { HOME_PAGE, ABOUT_PAGE, CONTACT_PAGE, SERVICE_PAGE, TODO_PAGE, POKEMON_PAGE } from '@ts/constants/routes';
 
 import Home from './Home';
 import About from './About';

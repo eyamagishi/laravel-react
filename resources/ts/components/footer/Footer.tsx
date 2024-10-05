@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Footer.scss';
 
-import { HOMEPAGE_NAME } from '../../constants/labels';
+import { HOMEPAGE_NAME } from '@ts/constants/labels';
 
 const Footer: React.FC = () => (
     <footer>

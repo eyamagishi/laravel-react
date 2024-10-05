@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './Header.scss';
 
-import { HOMEPAGE_NAME, HOME_NAME, ABOUT_NAME, CONTACT_NAME, SERVICE_NAME } from '../../constants/labels';
-import { HOME_PAGE, ABOUT_PAGE, CONTACT_PAGE, SERVICE_PAGE } from '../../constants/routes';
+import { HOMEPAGE_NAME, HOME_NAME, ABOUT_NAME, CONTACT_NAME, SERVICE_NAME } from '@ts/constants/labels';
+import { HOME_PAGE, ABOUT_PAGE, CONTACT_PAGE, SERVICE_PAGE } from '@ts/constants/routes';
 
 const Header: React.FC = () => {
     return (

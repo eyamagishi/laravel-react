@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import './Todo.scss';
+
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 

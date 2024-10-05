@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { HOMEPAGE_NAME } from '../constants/labels';
+import './Footer.scss';
+
+import { HOMEPAGE_NAME } from '../../constants/labels';
 
 const Footer: React.FC = () => (
     <footer>

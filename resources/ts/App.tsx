@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Header from './components/header/Header';
 import Main from './components/Main';
-import Footer from './components/Footer';
+import Footer from './components/footer/Footer';
 
 const App: React.FC = () => (
     <React.StrictMode>

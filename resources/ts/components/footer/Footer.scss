@@ -1,4 +1,7 @@
 /* _footer.scss */
+
+@import '@scss/abstracts/variables';
+
 footer {
     background: $footer-background;
     padding: 16px 0;

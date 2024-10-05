@@ -16,7 +16,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-          '@scss': path.resolve(__dirname, './resources/scss'),
+          '@scss': path.resolve(__dirname, 'resources/scss/'),
           '@ts': path.resolve(__dirname, 'resources/ts'),
         }
       }

@@ -13,7 +13,7 @@ class TodoController extends Controller
     /**
      * @var TodoService
      */
-    protected $todoService;
+    protected TodoService $todoService;
 
     /**
      * コンストラクタ

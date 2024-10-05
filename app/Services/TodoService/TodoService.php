@@ -12,7 +12,7 @@ class TodoService implements TodoServiceInterface
     /**
      * @var TodoRepository
      */
-    protected $todoRepository;
+    protected TodoRepository $todoRepository;
 
     /**
      * コンストラクタ

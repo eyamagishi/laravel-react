@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class CreateServiceCommand extends Command
 {
@@ -12,40 +13,43 @@ class CreateServiceCommand extends Command
      *
      * @var string
      */
-    protected $signature = "make:service {className}";
+    protected $signature = 'make:service {className : The name of the service class}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new service class';
+    protected $description = 'Create a new service class and its corresponding interface';
 
     /**
-     * @const string service directory path
+     * Directory path for services.
+     *
+     * @const string
      */
-    public const SERVICES_PATH = 'app/Services/';
+    private const SERVICES_PATH = 'app/Services/';
 
     /**
+     * The class name of the service to create.
+     *
      * @var string
      */
-    private $className;
+    private string $className;
 
     /**
      * Execute the console command.
      */
     public function handle(): void
     {
-        $this->className = $this->argument('className');
+        $this->className = Str::studly($this->argument('className'));
 
-        if (empty($this->className)) {
-            $this->error('Service Class Name is invalid');
+        if ($this->className === '') {
+            $this->error('The service class name is invalid. Please provide a valid class name.');
             return;
         }
 
-        $this->className = Str::studly($this->className);
         $this->createFiles();
-        $this->info('Service created successfully');
+        $this->info("Service {$this->className} created successfully.");
     }
 
     /**
@@ -54,38 +58,40 @@ class CreateServiceCommand extends Command
     private function createFiles(): void
     {
         $directoryName = $this->getServiceDirectoryName();
-        // ディレクトリが存在しない場合は作成
-        if (!is_dir($directoryName)) {
-            mkdir($directoryName, 0755, true);
+
+        // Create the directory if it doesn't exist
+        if (!File::exists($directoryName)) {
+            File::makeDirectory($directoryName, 0755, true);
         }
-        $this->checkAndCreateFile($this->getServiceFileName(), $this->getServiceFileContent());
-        $this->checkAndCreateFile($this->getServiceInterfaceFileName(), $this->getServiceInterfaceFileContent());
+
+        $this->createFile($this->getServiceFileName(), $this->getServiceFileContent());
+        $this->createFile($this->getServiceInterfaceFileName(), $this->getServiceInterfaceFileContent());
     }
 
     /**
-     * Check if the file exists and create it if not.
+     * Create a file if it does not already exist.
      *
      * @param string $fileName
      * @param string $fileContent
      */
-    private function checkAndCreateFile(string $fileName, string $fileContent): void
+    private function createFile(string $fileName, string $fileContent): void
     {
-        if (file_exists($fileName)) {
-            $this->error("{$fileName} already exists");
-            return;
+        if (File::exists($fileName)) {
+            $this->warn("File {$fileName} already exists.");
+        } else {
+            File::put($fileName, $fileContent);
+            $this->info("Created: {$fileName}");
         }
-
-        file_put_contents($fileName, $fileContent);
     }
 
     /**
-     * Get the service file name.
+     * Get the service directory path.
      *
      * @return string
      */
     private function getServiceDirectoryName(): string
     {
-        return self::SERVICES_PATH . $this->className . '/';
+        return base_path(self::SERVICES_PATH . $this->className);
     }
 
     /**
@@ -95,7 +101,7 @@ class CreateServiceCommand extends Command
      */
     private function getServiceFileName(): string
     {
-        return self::SERVICES_PATH . $this->className . '/' . $this->className . '.php';
+        return $this->getServiceDirectoryName() . '/' . $this->className . '.php';
     }
 
     /**
@@ -105,26 +111,26 @@ class CreateServiceCommand extends Command
      */
     private function getServiceInterfaceFileName(): string
     {
-        return self::SERVICES_PATH . $this->className . '/' . $this->className . 'Interface.php';
+        return $this->getServiceDirectoryName() . '/' . $this->className . 'Interface.php';
     }
 
     /**
-     * Get the service file content.
+     * Get the content of the service class.
      *
      * @return string
      */
     private function getServiceFileContent(): string
     {
-        return "<?php\n\nnamespace App\\Services\\{$this->className};\n\nclass {$this->className} implements {$this->className}Interface\n{\n\t//\n}\n";
+        return "<?php\n\nnamespace App\\Services\\{$this->className};\n\nclass {$this->className} implements {$this->className}Interface\n{\n    // Implement your service methods here\n}\n";
     }
 
     /**
-     * Get the service interface file content.
+     * Get the content of the service interface.
      *
      * @return string
      */
     private function getServiceInterfaceFileContent(): string
     {
-        return "<?php\n\nnamespace App\\Services\\{$this->className};\n\ninterface {$this->className}Interface\n{\n\t//\n}\n";
+        return "<?php\n\nnamespace App\\Services\\{$this->className};\n\ninterface {$this->className}Interface\n{\n    // Define your service interface methods here\n}\n";
     }
 }

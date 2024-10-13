@@ -49,7 +49,6 @@ class CreateServiceCommand extends Command
         }
 
         $this->createFiles();
-        $this->info("Service {$this->className} created successfully.");
     }
 
     /**

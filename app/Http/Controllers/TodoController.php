@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Symfony\Component\HttpFoundation\Response;
-
-use App\Http\Resources\TodoResource;
 use App\Http\Requests\TodoRequest;
+use App\Http\Resources\TodoResource;
 use App\Services\TodoService\TodoServiceInterface as TodoService;
+use Illuminate\Http\JsonResponse;
 
 class TodoController extends Controller
 {
@@ -28,31 +27,31 @@ class TodoController extends Controller
     /**
      * 全てのToDoを取得
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index(): JsonResponse
     {
         $todos = $this->todoService->getTodos();
-        return response()->json(TodoResource::collection($todos), Response::HTTP_OK);
+        return response()->json(TodoResource::collection($todos), JsonResponse::HTTP_OK);
     }
 
     /**
      * 新しいToDoを作成
      *
      * @param TodoRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function store(TodoRequest $request): \Illuminate\Http\JsonResponse
+    public function store(TodoRequest $request): JsonResponse
     {
         try {
             $validatedData = $request->validated();
             $todo = $this->todoService->createTodo($validatedData);
-            return response()->json(new TodoResource($todo), Response::HTTP_CREATED);
+            return response()->json(new TodoResource($todo), JsonResponse::HTTP_CREATED);
         } catch (\Exception $e) {
             return response()->json([
                 'error' => 'Todo creation failed',
                 'message' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -60,12 +59,12 @@ class TodoController extends Controller
      * 指定されたIDのToDoを取得
      *
      * @param int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function show(int $id): \Illuminate\Http\JsonResponse
+    public function show(int $id): JsonResponse
     {
         $todo = $this->todoService->findTodoById($id);
-        return response()->json(new TodoResource($todo), Response::HTTP_OK);
+        return response()->json(new TodoResource($todo), JsonResponse::HTTP_OK);
     }
 
     /**
@@ -73,19 +72,19 @@ class TodoController extends Controller
      *
      * @param TodoRequest $request
      * @param int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function update(TodoRequest $request, int $id): \Illuminate\Http\JsonResponse
+    public function update(TodoRequest $request, int $id): JsonResponse
     {
         try {
             $validatedData = $request->validated();
             $todo = $this->todoService->updateTodo($id, $validatedData);
-            return response()->json(new TodoResource($todo), Response::HTTP_OK);
+            return response()->json(new TodoResource($todo), JsonResponse::HTTP_OK);
         } catch (\Exception $e) {
             return response()->json([
                 'error' => 'Todo update failed',
                 'message' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -93,11 +92,11 @@ class TodoController extends Controller
      * 指定されたIDのToDoを削除
      *
      * @param int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function destroy(int $id): \Illuminate\Http\JsonResponse
+    public function destroy(int $id): JsonResponse
     {
         $this->todoService->deleteTodo($id);
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        return response()->json([], JsonResponse::HTTP_NO_CONTENT);
     }
 }

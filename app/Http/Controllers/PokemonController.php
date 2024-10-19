@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Symfony\Component\HttpFoundation\Response;
-
-use Illuminate\Http\Request;
 use App\Services\PokemonService\PokemonServiceInterface as PokemonService;
+use Illuminate\Http\JsonResponse;
+// use Illuminate\Http\Request;
 
 class PokemonController extends Controller
 {
@@ -27,13 +26,13 @@ class PokemonController extends Controller
     /**
      * 全てのToDoを取得
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index(): \Symfony\Component\HttpFoundation\Response
+    public function index(): JsonResponse
     {
         $data = [
             'name' => 'フシギダネ',
         ];
-        return response()->json($data, Response::HTTP_OK);
+        return response()->json($data, JsonResponse::HTTP_OK);
     }
 }

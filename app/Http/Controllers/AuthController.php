@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    public function login(Request $request): JsonResponse
     {
         $credentials = [
             'email' => $request->email,
@@ -30,11 +31,11 @@ class AuthController extends Controller
 
             return response()->json(['token' => $token], 200);
         } else {
-            return response()->json(['error' => '認証に失敗しました。'], 401);
+            return response()->json(['error' => '認証に失敗しました。'], JsonResponse::HTTP_UNAUTHORIZED);
         }
     }
 
-    public function user(Request $request)
+    public function user(Request $request): JsonResponse
     {
         return response()->json([
             'name' => $request->user()->name,
@@ -42,10 +43,9 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): JsonResponse
     {
         $request->user()->currentAccessToken()->delete();
-
-        return response()->json(['message' => 'ログアウトしました。'], 200);
+        return response()->json(['message' => 'ログアウトしました。'], JsonResponse::HTTP_OK);
     }
 }

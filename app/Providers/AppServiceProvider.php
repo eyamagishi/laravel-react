@@ -7,6 +7,8 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\TodoRepository\TodoRepository;
 use App\Repositories\TodoRepository\TodoRepositoryInterface;
 // Services
+use App\Services\AuthService\AuthService;
+use App\Services\AuthService\AuthServiceInterface;
 use App\Services\TodoService\TodoService;
 use App\Services\TodoService\TodoServiceInterface;
 
@@ -20,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         // Repositories
         $this->app->bind(TodoRepositoryInterface::class, TodoRepository::class);
         // Services
+        $this->app->bind(AuthServiceInterface::class, AuthService::class);
         $this->app->bind(TodoServiceInterface::class, TodoService::class);
     }
 

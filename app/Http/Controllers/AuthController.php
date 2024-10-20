@@ -2,18 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\AuthService\AuthServiceInterface as AuthService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    
+    /**
+     * @var AuthService
+     */
+    protected AuthService $authService;
+
+    /**
+     * construct
+     *
+     * @param AuthService $authService
+     */
+    public function __construct(AuthService $authService)
+    {
+        $this->authService = $authService;
+    }
+
+    /**
+     * ログイン機能
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function login(Request $request): JsonResponse
     {
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
+        $credentials = $this->authService->setCredentials($request);
         if (Auth::attempt($credentials)) {
             /**
              * TODO:
@@ -35,6 +55,12 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * ユーザー情報返却
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function user(Request $request): JsonResponse
     {
         return response()->json([
@@ -43,6 +69,12 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * ログアウト機能
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function logout(Request $request): JsonResponse
     {
         $request->user()->currentAccessToken()->delete();

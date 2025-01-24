@@ -48,10 +48,11 @@ class TodoController extends Controller
             $todo = $this->todoService->createTodo($validatedData);
             return response()->json(new TodoResource($todo), JsonResponse::HTTP_CREATED);
         } catch (\Exception $e) {
-            return response()->json([
-                'error' => 'Todo creation failed',
+            $data = [
+                'error'   => 'Todo creation failed',
                 'message' => $e->getMessage()
-            ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            ];
+            return response()->json($data, JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -81,10 +82,11 @@ class TodoController extends Controller
             $todo = $this->todoService->updateTodo($id, $validatedData);
             return response()->json(new TodoResource($todo), JsonResponse::HTTP_OK);
         } catch (\Exception $e) {
-            return response()->json([
-                'error' => 'Todo update failed',
+            $data = [
+                'error'   => 'Todo update failed',
                 'message' => $e->getMessage()
-            ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            ];
+            return response()->json($data, JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 

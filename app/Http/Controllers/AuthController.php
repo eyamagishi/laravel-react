@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    
     /**
      * @var AuthService
      */
@@ -48,10 +47,16 @@ class AuthController extends Controller
             // $user = Auth::user();
             $user = $request->user();
             $token = $user->createToken('AccessToken')->plainTextToken;
+            $data = [
+                'token' => $token
+            ];
 
-            return response()->json(['token' => $token], 200);
+            return response()->json($data, JsonResponse::HTTP_OK);
         } else {
-            return response()->json(['error' => '認証に失敗しました。'], JsonResponse::HTTP_UNAUTHORIZED);
+            $data = [
+                'error' => '認証に失敗しました。'
+            ];
+            return response()->json($data, JsonResponse::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -63,10 +68,11 @@ class AuthController extends Controller
      */
     public function user(Request $request): JsonResponse
     {
-        return response()->json([
-            'name' => $request->user()->name,
+        $data = [
+            'name'  => $request->user()->name,
             'email' => $request->user()->email,
-        ]);
+        ];
+        return response()->json($data, JsonResponse::HTTP_OK);
     }
 
     /**
@@ -77,7 +83,10 @@ class AuthController extends Controller
      */
     public function logout(Request $request): JsonResponse
     {
+        $data = [
+            'message' => 'ログアウトしました。'
+        ];
         $request->user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'ログアウトしました。'], JsonResponse::HTTP_OK);
+        return response()->json($data, JsonResponse::HTTP_OK);
     }
 }

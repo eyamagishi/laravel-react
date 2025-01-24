@@ -54,7 +54,7 @@ class AuthController extends Controller
             return response()->json($data, JsonResponse::HTTP_OK);
         } else {
             $data = [
-                'error' => '認証に失敗しました。'
+                'error' => $this->messages['auth_failure'],
             ];
             return response()->json($data, JsonResponse::HTTP_UNAUTHORIZED);
         }
@@ -84,7 +84,7 @@ class AuthController extends Controller
     public function logout(Request $request): JsonResponse
     {
         $data = [
-            'message' => 'ログアウトしました。'
+            'message' => $this->messages['logout']
         ];
         $request->user()->currentAccessToken()->delete();
         return response()->json($data, JsonResponse::HTTP_OK);

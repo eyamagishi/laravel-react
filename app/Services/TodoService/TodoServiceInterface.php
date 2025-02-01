@@ -23,7 +23,7 @@ interface TodoServiceInterface
     /**
      * 指定されたIDのToDoを取得
      *
-     * @param int $id
+     * @param int $id ToDoID
      * @return \App\Models\Todo|null
      */
     public function findTodoById(int $id): ?\App\Models\Todo;
@@ -31,19 +31,19 @@ interface TodoServiceInterface
     /**
      * 指定されたIDのToDoを更新
      *
-     * @param int $id
+     * @param int $id ToDoID
      * @param array $data
      * @return \App\Models\Todo|null
-     * @throws \Exception
+     * @throws \Exception 指定されたIDのToDoが存在しない場合、または更新処理でエラーが発生した場合にスローされる
      */
     public function updateTodo(int $id, array $data): ?\App\Models\Todo;
 
     /**
-     * 指定されたIDのToDoを削除
+     * 指定したIDのToDoを削除する
      *
-     * @param int $id
-     * @return bool
-     * @throws \Exception
+     * @param int $id 削除するToDoの一意の識別子
+     * @return bool 削除に成功した場合は true、失敗した場合は false
+     * @throws \Exception 指定されたIDのToDoが存在しない場合、または削除処理でエラーが発生した場合にスローされる
      */
     public function deleteTodo(int $id): bool;
 }

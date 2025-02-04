@@ -14,11 +14,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 // ToDoAPI
-Route::get('todos', [TodoController::class, 'index']);
-Route::post('todos', [TodoController::class, 'store']);
-Route::get('todos/{id}', [TodoController::class, 'show']);
-Route::put('todos/{id}', [TodoController::class, 'update']);
-Route::delete('todos/{id}', [TodoController::class, 'destroy']);
+Route::prefix('todos')->name('todos.')->group(function () {
+    Route::apiResource('/', TodoController::class)->parameters(['' => 'id']);
+});
 
 // PokemonAPI
-Route::get('pokemon', [PokemonController::class, 'index']);
+Route::prefix('pokemon')->name('pokemon.')->group(function () {
+    Route::apiResource('/', PokemonController::class)->parameters(['' => 'id']);
+});

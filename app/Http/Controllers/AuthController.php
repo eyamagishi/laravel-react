@@ -47,16 +47,16 @@ class AuthController extends Controller
             // $user = Auth::user();
             $user = $request->user();
             $token = $user->createToken('AccessToken')->plainTextToken;
-            $data = [
-                'token' => $token
-            ];
 
-            return response()->json($data, JsonResponse::HTTP_OK);
+            return response()->json(
+                ['token' => $token],
+                JsonResponse::HTTP_OK
+            );
         } else {
-            $data = [
-                'error' => $this->messages['auth_failure'],
-            ];
-            return response()->json($data, JsonResponse::HTTP_UNAUTHORIZED);
+            return response()->json(
+                ['error' => $this->getErrors()['auth_failure']], 
+                JsonResponse::HTTP_UNAUTHORIZED
+            );
         }
     }
 
@@ -68,11 +68,10 @@ class AuthController extends Controller
      */
     public function user(Request $request): JsonResponse
     {
-        $data = [
+        return response()->json([
             'name'  => $request->user()->name,
             'email' => $request->user()->email,
-        ];
-        return response()->json($data, JsonResponse::HTTP_OK);
+        ], JsonResponse::HTTP_OK);
     }
 
     /**
@@ -83,10 +82,21 @@ class AuthController extends Controller
      */
     public function logout(Request $request): JsonResponse
     {
-        $data = [
-            'message' => $this->messages['logout']
-        ];
-        $request->user()->currentAccessToken()->delete();
-        return response()->json($data, JsonResponse::HTTP_OK);
+        try {
+            $user = $request->user();
+            if ($user) {
+                $user->currentAccessToken()->delete();
+            }
+
+            return response()->json(
+                ['message' => $this->getMessages()['logout']],
+                JsonResponse::HTTP_OK
+            );
+        } catch (\Exception $e) {
+            return response()->json(
+                ['error' => $this->getErrors()['logout_failed']],
+                JsonResponse::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
     }
 }

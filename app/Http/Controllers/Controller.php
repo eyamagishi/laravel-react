@@ -6,15 +6,36 @@ use App\Consts\MessagesConst;
 
 abstract class Controller
 {
-    protected $messages = [];
+    private array $messages = [];
+    private array $errors = [];
 
     /**
      * construct
      *
-     * @param AuthService $authService
      */
-    public function __construct()
+    final public function __construct()
     {
-        $this->messages = MessagesConst::MESSAGES;
+        $this->messages = is_array(MessagesConst::MESSAGES) ? MessagesConst::MESSAGES : [];
+        $this->errors = is_array(MessagesConst::ERRORS) ? MessagesConst::ERRORS : [];
+    }
+
+    /**
+     * メッセージを取得
+     *
+     * @return array
+     */
+    protected function getMessages(): array
+    {
+        return $this->messages;
+    }
+
+    /**
+     * エラーを取得
+     *
+     * @return array
+     */
+    protected function getErrors(): array
+    {
+        return $this->errors;
     }
 }

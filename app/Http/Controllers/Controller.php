@@ -10,7 +10,7 @@ abstract class Controller
     private array $errors = [];
 
     /**
-     * construct
+     * コンストラクタ
      *
      */
     final public function __construct()

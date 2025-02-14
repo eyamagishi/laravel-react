@@ -15,7 +15,7 @@ class AuthController extends Controller
     protected AuthService $authService;
 
     /**
-     * construct
+     * コンストラクタ
      *
      * @param AuthService $authService
      */

@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 // Repositories
 use App\Repositories\TodoRepository\TodoRepository;
 use App\Repositories\TodoRepository\TodoRepositoryInterface;
+use App\Repositories\PokemonRepository\PokemonRepository;
+use App\Repositories\PokemonRepository\PokemonRepositoryInterface;
 // Services
 use App\Services\AuthService\AuthService;
 use App\Services\AuthService\AuthServiceInterface;
@@ -21,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Repositories
         $this->app->bind(TodoRepositoryInterface::class, TodoRepository::class);
+        $this->app->bind(PokemonRepositoryInterface::class, PokemonRepository::class);
         // Services
         $this->app->bind(AuthServiceInterface::class, AuthService::class);
         $this->app->bind(TodoServiceInterface::class, TodoService::class);

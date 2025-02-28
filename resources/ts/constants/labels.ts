@@ -5,3 +5,4 @@ export const CONTACT_NAME: string = "CONTACT";
 export const SERVICE_NAME: string = "SERVICE";
 export const TODO_NAME: string = "TODO";
 export const POKEMON_NAME: string = "POKEMON";
+export const MAHJONG_NAME: string = "MAHJONG";
